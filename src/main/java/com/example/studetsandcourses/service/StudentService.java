@@ -1,17 +1,19 @@
 package com.example.studetsandcourses.service;
 
 
-import com.example.studetsandcourses.dto.StudentDTO;
+
+
+import com.example.studetsandcourses.dto.StudentRequestDTO;
+import com.example.studetsandcourses.dto.StudentResponseDTO;
 
 import java.util.List;
 
 public interface StudentService {
 
-    void create(StudentDTO studentDTO);
-    StudentDTO findById(Long id);
-//    List<StudentDTO> findAllByCourseId(Long courseId);
+    void create(StudentRequestDTO studentDTO);
 
-    // GET Mapping /buildings
-    List<StudentDTO> getAllStudents();
+    List<StudentResponseDTO> getAll();
+
+    StudentResponseDTO getById(Long id);
 
 }

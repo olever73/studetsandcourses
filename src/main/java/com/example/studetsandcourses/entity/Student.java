@@ -9,29 +9,26 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "students")
+import lombok.*;
 
-@EntityListeners(AuditingEntityListener.class)
-@AllArgsConstructor
+import javax.persistence.*;
+
+@Entity
+@Table(name = "student")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-@SuperBuilder
-public class Student  {
+@Builder
+public class Student {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "name")
+
+    @Column(name = "name", unique = true)
     private String name;
-
-    // Column | JoinColumn
-
-    @JoinColumn(name = "course_id")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Course course;
-
-
-
 }
+
+

@@ -1,9 +1,11 @@
 package com.example.studetsandcourses.service;
 
-import com.example.studetsandcourses.dto.CourseDTO;
+import com.example.studetsandcourses.dto.CourseRequestDTO;
+import com.example.studetsandcourses.dto.CourseResponseDTO;
 
 public interface CourseService {
+    void create(CourseRequestDTO courseDTO);
 
-    CourseDTO getCourseById(Long id);
+    CourseResponseDTO getById(Long id);
 
 }

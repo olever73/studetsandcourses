@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="1" author="oleg">
+        <createTable tableName="student">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="course">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="course_name" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="student_course">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="student_id" type="bigint">
+                <constraints referencedTableName="student"
+                             referencedColumnNames="id"
+                             foreignKeyName="STUDENT_COURSE_STUDENT_ID_STUDENT_ID"/>
+            </column>
+
+            <column name="course_id" type="bigint">
+                <constraints referencedTableName="course"
+                             referencedColumnNames="id"
+                             foreignKeyName="STUDENT_COURSE_COURSE_ID_COURSE_ID"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>
